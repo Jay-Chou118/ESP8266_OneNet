@@ -1,0 +1,25 @@
+AT+CWMODE=3 //设置WIFI应用模式
+
+AT+RST //重置WIFI模块
+
+AT+CIFSR//查询本地IP
+
+AT+CWJAP="luxiaoguogege","lsh902902" //连接无线路由器
+
+
+2）和OneNet服务器建立TCP连接，依次发送命令：
+
+AT+CIPSTART="TCP","183.230.40.33",80 //和服务器建立TCP连接
+
+AT+CIPMODE=1 //进入透明传输模式
+
+AT+CIPSEND //开始传输
+
+/*可以直接发送了，http模式，替换成自己的设备ID和秘钥：507304837和XhBg=6vWuUYjdxAnMHHK2UeNxao= 就可以了*/
+
+POST /devices/507304837/datapoints?type=5 HTTP/1.1
+api-key:XhBg=6vWuUYjdxAnMHHK2UeNxao= 
+Host:api.heclouds.com
+Content-Length:9
+
+,;humi,03
